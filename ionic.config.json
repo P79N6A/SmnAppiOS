@@ -1,0 +1,7 @@
+{
+  "name": "SmnApp",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular"
+}

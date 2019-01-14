@@ -1,0 +1,32 @@
+<!--
+  Generated template for the SugarBabiesPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+      <button ion-button menuToggle>
+          <ion-icon name="menu"></ion-icon>
+        </button>
+    <ion-title>SugarBabies</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>
+	<ion-card *ngFor="let baby of allSugarBabies" (click)="goToUserDetailPage(baby.id)">
+   	 <img [src]="baby.profile_pic"/>
+      <ion-card-content><ion-item text-capitalize>Name: {{baby.nickname}}</ion-item></ion-card-content>
+      <ion-card-content>
+          <ion-item> ID<ion-badge item-right>{{baby.id}}</ion-badge></ion-item>
+      </ion-card-content>
+      <ion-card-content>
+          <ion-item> Rating<ion-badge item-right>{{baby.rating}}</ion-badge></ion-item>
+      </ion-card-content>
+ 	 </ion-card>
+</ion-content>
+
