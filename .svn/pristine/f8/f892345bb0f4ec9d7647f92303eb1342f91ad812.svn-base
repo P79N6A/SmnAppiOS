@@ -1,0 +1,42 @@
+import { Component, OnInit } from '@angular/core';
+import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { UsersProvider } from '../../providers/users/users';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+/**
+ * Generated class for the ContactPage page.
+ *
+ * See https://ionicframework.com/docs/components/#navigation for more info on
+ * Ionic pages and navigation.
+ */
+
+@IonicPage()
+@Component({
+  selector: 'page-contact',
+  templateUrl: 'contact.html',
+})
+export class ContactPage implements OnInit {
+  contactform: FormGroup;
+  userData={"name":"","email":"","message":""};
+  responseData:any;
+  responseMsg = false;
+  constructor(public usersProvider:UsersProvider, public navCtrl: NavController, public navParams: NavParams) {
+  }
+  ngOnInit() {
+    let EMAILPATTERN = /^[a-z0-9!#$%&'*+\/=?^_`{|}~.-]+@[a-z0-9]([a-z0-9-]*[a-z0-9])?(\.[a-z0-9]([a-z0-9-]*[a-z0-9])?)*$/i;
+    this.contactform = new FormGroup({
+      message: new FormControl('', [Validators.required]),
+      name: new FormControl('', [Validators.required, Validators.pattern('[a-zA-Z ]*'), Validators.minLength(4), Validators.maxLength(30)]),
+      email: new FormControl('', [Validators.required, Validators.pattern(EMAILPATTERN)]),
+    });
+  }
+  contactUs(){
+    this.usersProvider.contactUs(this.userData)
+      .subscribe((response) => {
+        this.responseData = response,
+        this.responseMsg = true;
+      });
+  }
+  ionViewDidLoad() {
+  }
+
+}

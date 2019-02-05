@@ -1,0 +1,6 @@
+page-timer {
+    p {
+        font-family: Lato;
+      }
+      .grid{background: red;}
+}

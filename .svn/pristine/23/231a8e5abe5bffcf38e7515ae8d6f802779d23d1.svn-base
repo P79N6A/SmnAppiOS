@@ -1,0 +1,4 @@
+page-login {
+    .login-content p{color:#fff;}
+    .loginWorning {color:rgb(223, 8, 8);}
+}

@@ -1,0 +1,19 @@
+import { Component } from '@angular/core';
+import { IonicPage, NavController, NavParams,ViewController } from 'ionic-angular';
+@IonicPage()
+@Component({
+  selector: 'page-video-popup',
+  templateUrl: 'video-popup.html',
+})
+export class VideoPopupPage {
+  public videoUrl=[];
+  constructor(public viewController: ViewController,public navCtrl: NavController, public navParams: NavParams) {
+  }
+  ionViewDidLoad() {
+    this.videoUrl=this.navParams.get("videoUrl");
+  }
+  closeModal(){
+    this.viewController.dismiss();
+  }
+
+}

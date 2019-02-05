@@ -1,0 +1,61 @@
+<ion-header>
+
+  <ion-navbar>
+      <button ion-button menuToggle>
+          <ion-icon name="menu"></ion-icon>
+        </button>
+    <ion-title>Contact</ion-title>
+  </ion-navbar>
+
+</ion-header>
+<ion-content padding>
+	<ion-title class="homelogo contact-logo" text-center><img src="../assets/imgs/login-logo.png" alt=""></ion-title>
+	<ion-list class="login-inputs">
+		<form novalidate (ngSubmit)="contactUs()" [formGroup]="contactform">
+			<ion-item>
+					<ion-label stacked>Enter Name</ion-label>
+				<ion-input type="text" placeholder="Name" [(ngModel)]="userData.name" formControlName="name" [class.error1]="!contactform.controls.name.valid && contactform.controls.name.dirty"></ion-input>
+			</ion-item>
+			<ion-item no-lines *ngIf="( contactform.get('name').hasError('minlength') || contactform.get('name').hasError('maxlength') ||contactform.get('name').hasError('pattern') ||contactform.get('name').hasError('required') ) && contactform.get('name').touched">
+				<div class="error" *ngIf="contactform.get('name').hasError('required') && contactform.get('name').touched">
+					Please enter your name
+				</div>
+				<div class="error" *ngIf="contactform.get('name').hasError('minlength') && contactform.get('name').touched">
+					Minimum 4 characters
+				</div>
+				<div class="error" *ngIf="contactform.get('name').hasError('maxlength') && contactform.get('name').touched">
+					Maximum 30 characters
+				</div>
+				<div class="error" *ngIf="contactform.get('name').hasError('pattern') && contactform.get('name').touched">
+					Just use alphabet character
+				</div>
+			</ion-item>
+
+			<ion-item>
+					<ion-label stacked>Enter Email Id</ion-label>
+				<ion-input type="email" placeholder="Email" [(ngModel)]="userData.email" formControlName="email" [class.error1]="!contactform.controls.email.valid && contactform.controls.email.dirty"></ion-input>
+			</ion-item>
+			<ion-item no-lines *ngIf="( contactform.get('email').hasError('minlength') || contactform.get('email').hasError('pattern') ||contactform.get('email').hasError('required') ) && contactform.get('email').touched">
+				<div class="error" *ngIf="contactform.get('email').hasError('required') && contactform.get('email').touched">
+					Please enter your email
+				</div>
+				<div class="error" *ngIf="contactform.get('email').hasError('pattern') && contactform.get('email').touched">
+					Email address invalid
+				</div>
+			</ion-item>
+			<ion-item>
+					<ion-label stacked>Enter Your Message</ion-label>
+					<ion-textarea placeholder="Message" [(ngModel)]="userData.message" formControlName="message" [class.error1]="!contactform.controls.message.valid && contactform.controls.message.dirty"></ion-textarea>
+			</ion-item>
+
+			<ion-item no-lines *ngIf="( contactform.get('message').hasError('required') ) && contactform.get('message').touched">
+				<div class="error">
+					Please enter your message
+				</div>
+			</ion-item>
+			<ion-item [class]="responseclass" *ngIf="responseMsg">{{responseData.msg}}</ion-item>
+			<button type="submit" class="disable-hover button button-ios btn-login" ion-button block color="primary" [disabled]="contactform.invalid">SUBMIT</button>
+		</form>
+	</ion-list>
+</ion-content>
+

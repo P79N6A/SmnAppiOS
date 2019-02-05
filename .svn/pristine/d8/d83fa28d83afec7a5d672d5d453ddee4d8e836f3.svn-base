@@ -1,0 +1,24 @@
+page-auction-room {
+    .home-wrap.content{background:url(../assets/imgs/home-bg.jpg) no-repeat !important;
+    background-size: cover !important;}
+    .home-btm-btn button{width:100%;}
+    .home-auction{text-align:center;
+    color:#fff;}
+    .home-auction h2 span{color:#c61925;}
+    
+    .home-wrap .scroll-content{
+        /*background: linear-gradient(transparent, #890606);
+        background: -webkit-linear-gradient(to bottom, transparent, #890606);
+        background: linear-gradient(to bottom,transparent , #890606);*/
+		background: none;
+      }
+      .home-auction h2{font-size:26px;
+      font-weight:bold;margin:0px 0px 15px;}
+      .home-auction h3{font-size:22px; margin:0px 0px 5px;}
+      .home-auction h6{font-size:16px; margin:0px 0px 16px;}
+      .home-browse ion-icon{padding-left:8px;}
+}
+.auction-btn .button-ios, .home-btm-btn .button-ios{
+    height: 2.6em;
+    font-size: 1.5rem;}
+.auction-btn{margin-bottom: 10px;}

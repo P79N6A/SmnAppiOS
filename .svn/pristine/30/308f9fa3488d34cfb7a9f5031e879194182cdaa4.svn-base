@@ -1,0 +1,32 @@
+import { Component } from '@angular/core';
+import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { UsersProvider } from '../../providers/users/users';
+/**
+ * Generated class for the JoinUsPage page.
+ *
+ * See https://ionicframework.com/docs/components/#navigation for more info on
+ * Ionic pages and navigation.
+ */
+
+@IonicPage()
+@Component({
+  selector: 'page-join-us',
+  templateUrl: 'join-us.html',
+})
+export class JoinUsPage {
+  userData={"name":"","email":"","message":""};
+  responseData:any;
+  responseMsg = false;
+  constructor(public usersProvider:UsersProvider, public navCtrl: NavController, public navParams: NavParams) {
+  }
+
+  ionViewDidLoad() {
+  } 
+      joinUs(){
+        this.usersProvider.joinUs(this.userData)
+      .subscribe((response) => {
+        this.responseData = response,
+        this.responseMsg = true;
+      });
+      }
+}

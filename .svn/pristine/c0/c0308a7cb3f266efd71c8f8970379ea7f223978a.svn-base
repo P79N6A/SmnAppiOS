@@ -1,0 +1,45 @@
+import { Component } from '@angular/core';
+import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { UsersProvider } from '../../providers/users/users';
+
+/**
+ * Generated class for the HomePage page.
+ *
+ * See https://ionicframework.com/docs/components/#navigation for more info on
+ * Ionic pages and navigation.
+ */
+
+@IonicPage()
+@Component({
+  selector: 'page-home',
+  templateUrl: 'home.html',
+})
+export class HomePage {
+  public allSugarBabies=[];
+  constructor(public navCtrl: NavController,
+    private usersProvider:UsersProvider,
+    public navParams: NavParams) {
+  }
+
+  ionViewDidLoad() {
+    this.usersProvider.getSugarBabies()
+		.subscribe((response)=> {this.allSugarBabies=response});
+  }
+  goToUserDetailPage(babyId){
+  	this.navCtrl.push('BabyDetailPage',{
+  		sugarBabyId:babyId
+  	});
+	}
+  enterAuctionRoom(){
+    this.navCtrl.setRoot('AuctionRoomPage');
+  }
+  browseSb(){
+    this.navCtrl.push('SugarBabiesPage');
+  }
+  join(){
+    this.navCtrl.push('JoinUsPage');
+  }
+  login(){
+    this.navCtrl.push('LoginPage');
+  }
+}

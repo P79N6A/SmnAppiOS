@@ -1,0 +1,6 @@
+page-contact {
+.contact-logo{
+margin:20px 0px 30px;
+}
+.loginWorning {color:rgb(223, 8, 8);}
+}

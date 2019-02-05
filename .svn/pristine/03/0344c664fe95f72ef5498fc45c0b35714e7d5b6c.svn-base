@@ -1,0 +1,82 @@
+<!--
+  Generated template for the LoginPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+<ion-header>
+
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title *ngIf="!authenticated">Login</ion-title>
+    <ion-title *ngIf="authenticated">Logout</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+<ion-list *ngIf="!authenticated">
+
+  <ion-item>
+    <ion-label floating>User Name</ion-label>
+    <ion-input type="text" [(ngModel)]="userData.email"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label floating>Password</ion-label>
+    <ion-input type="password" [(ngModel)]="userData.password"></ion-input>
+  </ion-item>
+  <ion-item >{{responseFailsData}}</ion-item>
+  <button ion-button full round (click)="setAuthState(true)" *ngIf="!authenticated">Join</button>
+  <button ion-button full round color="danger" (click)="goToResetPassPage()">Forgot Password</button>
+  <button ion-button full color="danger" (click)="logout" *ngIf="authenticated">Logout</button>
+
+</ion-list>
+<ion-list *ngIf="authenticated">
+    <button ion-button full round color="danger" (click)="setAuthState(false)" *ngIf="authenticated">Logout</button>
+</ion-list>
+</ion-content> -->
+<ion-header>
+
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title *ngIf="!authenticated">Login</ion-title>
+    <ion-title *ngIf="authenticated">Logout</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-title class="homelogo" text-center><img src="../assets/imgs/login-logo.png" alt=""></ion-title>
+  <ion-card class="login-content">
+    <ion-card-content>
+      <p text-center>Join SugarMeNow today and find yourself a lovely date or the perfect arrangment Be
+        prepared for access to the top.</p>
+    </ion-card-content>
+  </ion-card>
+  <ion-list class="login-inputs" *ngIf="!authenticated">
+
+    <ion-item>
+      <ion-label stacked>Email</ion-label>
+      <ion-input type="email" placeholder="Email" [(ngModel)]="userData.email"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label stacked>Password</ion-label>
+      <ion-input type="password" placeholder="Password" [(ngModel)]="userData.password"></ion-input>
+    </ion-item>
+    <ion-item class="loginWorning">{{responseFailsData}}</ion-item>
+    <button block color="primary" ion-button="" class="disable-hover button button-ios btn-login" (click)="setAuthState(true)"
+      *ngIf="!authenticated">LOGIN</button>
+    <button class="btn-forgot" ion-button full clear (click)="goToResetPassPage()">Forgot Password</button>
+
+  </ion-list>
+  <ion-list *ngIf="authenticated">
+    <button ion-button full round color="danger" (click)="setAuthState(false)" *ngIf="authenticated">Logout</button>
+  </ion-list>
+</ion-content>

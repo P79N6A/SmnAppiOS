@@ -1,0 +1,150 @@
+webpackJsonp([8],{
+
+/***/ 687:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LoginPageModule", function() { return LoginPageModule; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(84);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__login__ = __webpack_require__(704);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+
+
+
+var LoginPageModule = /** @class */ (function () {
+    function LoginPageModule() {
+    }
+    LoginPageModule = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["I" /* NgModule */])({
+            declarations: [
+                __WEBPACK_IMPORTED_MODULE_2__login__["a" /* LoginPage */],
+            ],
+            imports: [
+                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__login__["a" /* LoginPage */]),
+            ],
+        })
+    ], LoginPageModule);
+    return LoginPageModule;
+}());
+
+//# sourceMappingURL=login.module.js.map
+
+/***/ }),
+
+/***/ 704:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return LoginPage; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(84);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_users_users__ = __webpack_require__(347);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_storage__ = __webpack_require__(150);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_forms__ = __webpack_require__(25);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+
+/**
+ * Generated class for the LoginPage page.
+ *
+ * See https://ionicframework.com/docs/components/#navigation for more info on
+ * Ionic pages and navigation.
+ */
+var LoginPage = /** @class */ (function () {
+    function LoginPage(usersProvider, navCtrl, navParams, storage) {
+        var _this = this;
+        this.usersProvider = usersProvider;
+        this.navCtrl = navCtrl;
+        this.navParams = navParams;
+        this.storage = storage;
+        this.authenticated = false;
+        this.errorMsg = false;
+        this.responseData = null;
+        this.responseFailsData = [];
+        this.userData = { "email": "", "password": "" };
+        this.storage.get('my_token').then(function (val) {
+            if (val != null) {
+                _this.authenticated = true;
+            }
+        });
+    }
+    LoginPage.prototype.ngOnInit = function () {
+        var EMAILPATTERN = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-z\-0-9]+\.)+[a-z]{2,}))$/;
+        this.loginform = new __WEBPACK_IMPORTED_MODULE_4__angular_forms__["b" /* FormGroup */]({
+            password: new __WEBPACK_IMPORTED_MODULE_4__angular_forms__["a" /* FormControl */]('', [__WEBPACK_IMPORTED_MODULE_4__angular_forms__["g" /* Validators */].required, __WEBPACK_IMPORTED_MODULE_4__angular_forms__["g" /* Validators */].minLength(6)]),
+            email: new __WEBPACK_IMPORTED_MODULE_4__angular_forms__["a" /* FormControl */]('', [__WEBPACK_IMPORTED_MODULE_4__angular_forms__["g" /* Validators */].required, __WEBPACK_IMPORTED_MODULE_4__angular_forms__["g" /* Validators */].pattern(EMAILPATTERN)]),
+        });
+    };
+    LoginPage.prototype.ionViewDidLoad = function () {
+    };
+    LoginPage.prototype.setAuthState = function (authenticated) {
+        var _this = this;
+        if (authenticated) {
+            this.usersProvider.userLogin(this.userData)
+                .subscribe(function (response) {
+                _this.responseData = response;
+                if (_this.responseData['status'] != 0) {
+                    _this.navCtrl.push('UserProfilePage', { data: _this.responseData['data']['profile']['id']
+                    });
+                    _this.storage.set('my_token', _this.responseData['data']['profile']['id']).then(function () {
+                        _this.authenticated = true;
+                        _this.errorMsg = false;
+                    });
+                }
+                else {
+                    _this.errorMsg = true;
+                    _this.responseFailsData = _this.responseData['msg'];
+                    _this.authenticated = false;
+                }
+            });
+            this.storage.get('my_token').then(function (val) {
+                console.log(val);
+            });
+        }
+        else {
+            this.storage.remove('my_token').then(function () {
+                _this.authenticated = false;
+                _this.responseFailsData = null;
+            });
+            this.storage.get('my_token').then(function (val) {
+                console.log(val);
+            });
+        }
+    };
+    LoginPage.prototype.goToResetPassPage = function () {
+        this.navCtrl.push('ResetPasswordPage');
+    };
+    LoginPage = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
+            selector: 'page-login',template:/*ion-inline-start:"C:\Users\umashankar.maurya\Desktop\ionic\SmnApp2\src\pages\login\login.html"*/'<ion-header>\n\n  <ion-navbar>\n    <button ion-button menuToggle>\n      <ion-icon name="menu"></ion-icon>\n    </button>\n    <ion-title *ngIf="!authenticated">Login</ion-title>\n    <ion-title *ngIf="authenticated">Logout</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n  <ion-title class="homelogo" text-center><img src="../assets/imgs/login-logo.png" alt=""></ion-title>\n  <ion-card class="login-content">\n    <ion-card-content>\n      <p text-center>Join SugarMeNow today and find yourself a lovely date or the perfect arrangment Be\n        prepared for access to the top.</p>\n    </ion-card-content>\n  </ion-card>\n  <ion-list no-lines class="login-inputs" *ngIf="!authenticated">\n\n\n      <form novalidate (ngSubmit)="setAuthState(true)" [formGroup]="loginform">\n    <ion-item no-lines>\n      <ion-label stacked>Email</ion-label>\n      <ion-input no-lines type="email" placeholder="Email" [(ngModel)]="userData.email" formControlName="email" [class.error1]="!loginform.controls.email.valid && loginform.controls.email.dirty"></ion-input>\n    </ion-item>\n    <ion-item no-lines *ngIf="( loginform.get(\'email\').hasError(\'minlength\') || loginform.get(\'email\').hasError(\'pattern\') ||loginform.get(\'email\').hasError(\'required\') ) && loginform.get(\'email\').touched">\n        <div class="error" *ngIf="loginform.get(\'email\').hasError(\'required\') && loginform.get(\'email\').touched">\n          Please input your email\n        </div>\n        <div class="error" *ngIf="loginform.get(\'email\').hasError(\'pattern\') && loginform.get(\'email\').touched">\n          Email address invalid\n        </div>\n      </ion-item>\n    <ion-item no-lines>\n      <ion-label stacked>Password</ion-label>\n      <ion-input type="password" placeholder="Password" [(ngModel)]="userData.password" formControlName="password" [class.error1]="!loginform.controls.password.valid && loginform.controls.password.dirty"></ion-input>\n    </ion-item>\n    <ion-item no-lines *ngIf="( loginform.get(\'password\').hasError(\'minlength\') ||loginform.get(\'password\').hasError(\'required\') ) && loginform.get(\'password\').touched">\n        <div class="error" *ngIf="loginform.get(\'password\').hasError(\'required\') && loginform.get(\'password\').touched">\n          Please input your password\n        </div>\n        <div class="error" *ngIf="loginform.get(\'password\').hasError(\'minlength\') && loginform.get(\'password\').touched">\n          Minimum 6 characters\n        </div>\n      </ion-item>\n    <ion-item class="error" *ngIf="errorMsg">{{responseFailsData}}</ion-item>\n    <button type="submit" ion-button full block color="primary" class="disable-hover button button-ios btn-login" [disabled]="loginform.invalid"\n      *ngIf="!authenticated">LOGIN</button>\n    </form>\n    <button class="btn-forgot" ion-button full clear (click)="goToResetPassPage()">Forgot Password</button>\n  </ion-list>\n  <ion-list *ngIf="authenticated">\n    <button ion-button full block color="danger" (click)="setAuthState(false)" *ngIf="authenticated">Logout</button>\n  </ion-list>\n</ion-content>'/*ion-inline-end:"C:\Users\umashankar.maurya\Desktop\ionic\SmnApp2\src\pages\login\login.html"*/,
+        }),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__providers_users_users__["a" /* UsersProvider */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavParams */], __WEBPACK_IMPORTED_MODULE_3__ionic_storage__["b" /* Storage */]])
+    ], LoginPage);
+    return LoginPage;
+}());
+
+//# sourceMappingURL=login.js.map
+
+/***/ })
+
+});
+//# sourceMappingURL=8.js.map

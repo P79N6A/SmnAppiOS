@@ -1,0 +1,58 @@
+page-sugar-babies {
+    .card-content{
+        padding: 0px 10px 10px;
+        /*background:#2e2e2e;*/
+        color:#fff;
+    }
+    .babylist-item h3{
+    margin:0px 0px 5px 0px;
+    color:#fff;
+        
+    }
+    .babylist-item h4{
+    font-size:11px;
+    margin:0px 0px 10px 0px;
+    font-style: italic;
+    color:#fff;
+        
+    }
+    .babylist-item p{
+    margin:0px;
+    color:#fff;
+	font-size: 1.3rem;
+    }
+    .daterow{
+    background:#212121;
+        
+    }
+	.babylist-item .card{
+	margin:10px;
+	width: calc(100% - 10px);
+	background: #1b1b1b;
+	border-radius: 4px;
+	-webkit-border-radius:4px; 
+  -moz-border-radius:4px; 
+	border: 1px solid #292929;
+	}
+	.babylist-item .card img{
+	width: 100%;
+	padding: 10px;
+	border-radius: 4px;
+	-webkit-border-radius:4px; 
+  -moz-border-radius:4px; }
+	.babylist-item:nth-child(odd) .card{
+	margin-left:0px;}
+	.babylist-item:nth-child(2n) .card{
+	margin-right:0px;
+	}
+	.searchbar{padding:0px;
+	.searchbar-input{background: #969696;
+	line-height: normal;
+	color:#000;}
+	}
+	.searchbar-md .searchbar-search-icon {
+    top: 8px;}
+	.searchbar-md .searchbar-input {
+    padding: 6px 40px;
+	}
+    }

@@ -1,0 +1,25 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Reset Your Password</ion-title>
+    <button ion-button menuToggle right>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+  <ion-title class="homelogo" text-center><img src="../assets/imgs/login-logo.png" alt=""></ion-title>
+  <ion-list class="login-inputs">
+    <ion-item>
+      <ion-label stacked>Email</ion-label>
+      <ion-input type="email" placeholder="Please Enter Email" [(ngModel)]="userData.email"></ion-input>
+    </ion-item>
+    <ion-item class="loginWorning" *ngIf="responseMsg">{{responseData.msg}}</ion-item>
+    <button block color="primary" ion-button="" class="disable-hover button button-ios btn-login" (click)="resetPassword()">Submit</button>
+
+  </ion-list>
+</ion-content>

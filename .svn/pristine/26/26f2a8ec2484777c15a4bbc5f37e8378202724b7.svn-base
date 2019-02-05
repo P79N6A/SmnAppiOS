@@ -1,0 +1,9 @@
+import { NgModule } from '@angular/core';
+import { PageFooterComponent } from './page-footer/page-footer';
+import { IonicModule } from 'ionic-angular';
+@NgModule({
+	declarations: [PageFooterComponent],
+	imports: [IonicModule],
+	exports: [PageFooterComponent]
+})
+export class ComponentsModule {}

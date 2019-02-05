@@ -1,0 +1,21 @@
+page-join-us {
+.join-checkboxes{
+	.list{
+    width: 100%;
+    margin-bottom: 10px;
+	}
+	.grid,.col{padding:0px;}
+	.label{margin: 6px 6px 6px 0;}
+	.item .radio{margin: 6px 10px 6px 0px;}
+}
+.login-inputs{
+	.item .radio{margin: 6px 10px 6px 0px;}
+	.label{margin: 6px 6px 6px 0;}
+	.toolbar-title-md,.toolbar-title-wp{padding:0px;}
+}
+.login-inputs.checkboxes-join{ 
+ margin-bottom: 10px;
+}
+.error {color:rgb(223, 8, 8); }
+.sucess-msg {color:rgb(3, 71, 9); }
+}

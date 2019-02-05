@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        is-multidex="false"
+        jar="C:\Users\umashankar.maurya\Desktop\ionic\SmnApp\platforms\android\app\build\intermediates\transforms\desugar\release\2.jar"
+        jumboMode="false"
+        min-sdk-version="19"
+        optimize="true"
+        revision="28.0.2"
+        sha1="00bd536bdc2768828c4abfae96d68f54ff6aef72">
+        <dex dex="C:\Users\umashankar.maurya\Desktop\ionic\SmnApp\platforms\android\app\build\intermediates\transforms\preDex\release\2.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\umashankar.maurya\Desktop\ionic\SmnApp\platforms\android\app\build\intermediates\transforms\desugar\release\0.jar"
+        jumboMode="false"
+        min-sdk-version="19"
+        optimize="true"
+        revision="28.0.2"
+        sha1="3e41042ea2161e7c6e1b72eba111a87552bb7cd4">
+        <dex dex="C:\Users\umashankar.maurya\Desktop\ionic\SmnApp\platforms\android\app\build\intermediates\transforms\preDex\release\1.jar" />
+    </item>
+
+</items>

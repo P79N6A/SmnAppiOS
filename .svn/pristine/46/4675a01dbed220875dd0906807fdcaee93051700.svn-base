@@ -1,0 +1,32 @@
+import { Component } from '@angular/core';
+import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { UsersProvider } from '../../providers/users/users';
+/**
+ * Generated class for the ResetPasswordPage page.
+ *
+ * See https://ionicframework.com/docs/components/#navigation for more info on
+ * Ionic pages and navigation.
+ */
+
+@IonicPage()
+@Component({
+  selector: 'page-reset-password',
+  templateUrl: 'reset-password.html',
+})
+export class ResetPasswordPage {
+  userData = {"email": ""};
+  responseData: any;
+  responseMsg = false;
+  constructor(private usersProvider: UsersProvider, public navCtrl: NavController, public navParams: NavParams) {
+  }
+  resetPassword() {
+    this.usersProvider.resetPassword(this.userData)
+      .subscribe((response) => {
+        this.responseData = response,
+        this.responseMsg = true;
+      });
+  }
+  ionViewDidLoad() {
+  }
+
+}

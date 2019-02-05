@@ -1,0 +1,137 @@
+webpackJsonp([14],{
+
+/***/ 691:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "BabyDetailPageModule", function() { return BabyDetailPageModule; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(84);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__baby_detail__ = __webpack_require__(708);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+
+
+
+var BabyDetailPageModule = /** @class */ (function () {
+    function BabyDetailPageModule() {
+    }
+    BabyDetailPageModule = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["I" /* NgModule */])({
+            declarations: [
+                __WEBPACK_IMPORTED_MODULE_2__baby_detail__["a" /* BabyDetailPage */],
+            ],
+            imports: [
+                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__baby_detail__["a" /* BabyDetailPage */]),
+            ],
+        })
+    ], BabyDetailPageModule);
+    return BabyDetailPageModule;
+}());
+
+//# sourceMappingURL=baby-detail.module.js.map
+
+/***/ }),
+
+/***/ 708:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return BabyDetailPage; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(84);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_users_users__ = __webpack_require__(347);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+var BabyDetailPage = /** @class */ (function () {
+    function BabyDetailPage(usersProvider, modalController, navCtrl, navParams) {
+        this.usersProvider = usersProvider;
+        this.modalController = modalController;
+        this.navCtrl = navCtrl;
+        this.navParams = navParams;
+        this.proInfo = [];
+        this.publicImage = [];
+        this.publicVideo = [];
+        this.babyId = this.navParams.get("sugarBabyId");
+    }
+    BabyDetailPage.prototype.ionViewWillEnter = function () {
+        this.babyDetails = "about";
+        var countDownDate = new Date("Oct 22, 2019 14:50:25").getTime();
+        // Update the count down every 1 second
+        var x = setInterval(function () {
+            // Get todays date and time
+            var now = new Date().getTime();
+            // Find the distance between now and the count down date
+            var distance = countDownDate - now;
+            // Time calculations for days, hours, minutes and seconds
+            //let days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+            // Output the result in an element with id="auctionTimer"
+            //document.getElementById("auctionTimer").innerHTML = days + "d " + hours + "h "+ minutes + "m " + seconds + "s ";
+            var time = document.getElementById("timer");
+            if (time) {
+                document.getElementById("hours").innerHTML = hours + "";
+                document.getElementById("minuts").innerHTML = minutes + "";
+                document.getElementById("seconds").innerHTML = seconds + "";
+                // If the count down is over, write some text 
+                if (distance < 0) {
+                    clearInterval(x);
+                    document.getElementById("auctionTimer").innerHTML = "AUCTION CLOSED";
+                }
+            }
+        }, 1000);
+    };
+    BabyDetailPage.prototype.ionViewDidLoad = function () {
+        var _this = this;
+        var postData = { "babyId": this.babyId };
+        this.usersProvider.getSugarBabiesDetails(postData)
+            .subscribe(function (response) {
+            _this.proInfo = response['data'],
+                _this.publicImage = response['data']['user_public_image'],
+                _this.publicVideo = response['data']['public_videos'];
+        });
+    };
+    BabyDetailPage.prototype.openImageModel = function (profile_pic) {
+        var openImgModal = this.modalController.create('ImagePopupPage', { imgUrl: profile_pic });
+        openImgModal.present();
+    };
+    BabyDetailPage.prototype.openVideoModel = function (user_video) {
+        var openVideoModal = this.modalController.create('VideoPopupPage', { videoUrl: user_video });
+        openVideoModal.present();
+    };
+    BabyDetailPage.prototype.openLogin = function () {
+        this.navCtrl.push('LoginPage');
+    };
+    BabyDetailPage = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
+            selector: 'page-baby-detail',template:/*ion-inline-start:"C:\Users\umashankar.maurya\Desktop\ionic\SmnApp2\src\pages\baby-detail\baby-detail.html"*/'<ion-header>\n  <ion-navbar>\n    <ion-title text-capitalize>{{proInfo.nickname}}</ion-title>\n  </ion-navbar>\n</ion-header>\n<ion-content padding>\n  <ion-grid class="details-profile">\n    <ion-row>\n      <ion-col col-4>\n        <ion-card>\n          <img [src]="proInfo.pro_pic" />\n        </ion-card>\n      </ion-col>\n      <ion-col col-8>\n        <ion-card>\n          <ion-card-content text-capitalize>\n            <h2>{{proInfo.nickname}}</h2>, {{proInfo.age}}\n          </ion-card-content>\n          <ion-card-content text-capitalize>\n            {{proInfo.address}}\n          </ion-card-content>\n          <!--<ion-card-content>\n        Member Since: {{proInfo.memberSince}}\n      </ion-card-content>\n      <ion-card-content>\n        Last Active: {{proInfo.last_login}}\n      </ion-card-content>-->\n        </ion-card>\n      </ion-col>\n    </ion-row>\n  </ion-grid>\n  <div class="highestbid-cont">\n    <ion-card>\n      <ion-card-content>\n        <div class="highest-bid">\n          <h2>Highest Bid <span color="danger">€950</span></h2>\n        </div>\n      </ion-card-content>\n    </ion-card>\n    <ion-card>\n      <ion-card-content class="auction-timer">\n        <div class="auction-time" id="timer">\n          <h2>Auction Closes In</h2>\n          <ion-item id="auctionTimer">\n            <ion-grid>\n              <ion-row>\n                <ion-col id="hours"></ion-col>\n                <ion-col id="minuts"></ion-col>\n                <ion-col id="seconds"></ion-col>\n              </ion-row>\n              <ion-row class="time-txt">\n                <ion-col>HOURS</ion-col>\n                <ion-col>MINUTES</ion-col>\n                <ion-col>SECONDS</ion-col>\n              </ion-row>\n            </ion-grid>\n          </ion-item>\n\n        </div>\n        <ion-grid class="place-bid">\n          <ion-row>\n            <ion-col col-6>\n              <ion-item>\n                <ion-input type="text" placeholder="$0"></ion-input>\n              </ion-item>\n            </ion-col>\n            <ion-col col-6>\n              <button ion-button color="danger">PLACE YOUR BID</button>\n            </ion-col>\n          </ion-row>\n        </ion-grid>\n      </ion-card-content>\n    </ion-card>\n  </div>\n\n  <ion-toolbar no-border-top class="details-tabbing">\n    <ion-segment [(ngModel)]="babyDetails">\n      <ion-segment-button value="about">\n        ABOUT\n      </ion-segment-button>\n      <ion-segment-button value="photos">\n        PHOTOS\n      </ion-segment-button>\n      <ion-segment-button value="videos">\n        VIDEOS\n      </ion-segment-button>\n    </ion-segment>\n  </ion-toolbar>\n  <div [ngSwitch]="babyDetails" class="babyDetails">\n    <ion-list *ngSwitchCase="\'about\'">\n      <ion-card>\n        <ion-card-content>\n          <ion-grid>\n            <ion-row>\n              <ion-col col-6>\n                <ul text-capitalize>\n                  <li>\n                    Name: {{proInfo.nickname}}\n                  </li>\n                  <li>\n                    Age: {{proInfo.age}}\n                  </li>\n                  <li>\n                    Body Type: {{proInfo.bodyType}}\n                  </li>\n                  <li>\n                    Drinking: {{proInfo.drinking}}\n                  </li>\n                  <li>\n                    Smoking: {{proInfo.smoking}}\n                  </li>\n                </ul>\n              </ion-col>\n              <ion-col col-6>\n                <ul text-capitalize>\n                  <li>Eyes: {{proInfo.eyesColor}}\n                  </li>\n                  <li>\n                    Hair Length: {{proInfo.hairLength}}\n                  </li>\n                  <li>\n                    Height: {{proInfo.height}}\n                  </li>\n                  <li>\n                    Shoe Size: {{proInfo.shoe_size}}\n                  </li>\n                  <li>\n                    Bra Size: {{proInfo.suit_size}}\n                  </li>\n                </ul>\n              </ion-col>\n            </ion-row>\n          </ion-grid>\n        </ion-card-content>\n      </ion-card>\n    </ion-list>\n    <ion-list *ngSwitchCase="\'photos\'" class="profile-photos">\n      <ion-grid>\n        <ion-row>\n          <ion-col col-4 class="private-img" (click)="openLogin()"><div class="private-img">\n              <h3>Private Photo<span>Sent Request</span></h3>\n            </div></ion-col>\n          <ion-col col-4 *ngFor="let babyImg of publicImage" (click)="openImageModel(babyImg.filename)"><img [src]="babyImg.filename" /></ion-col>\n        </ion-row>\n      </ion-grid>\n    </ion-list>\n    <ion-list *ngSwitchCase="\'videos\'" class="public-videos">\n      <ion-grid>\n        <ion-row>\n          <ion-col text-center col-6 *ngFor="let babyVideo of publicVideo" (click)="openVideoModel(babyVideo.filename)">\n                  <video preload="metadata" webkit-playsinline="webkit-playsinline" class="videoPlayer">\n                   <source [src]="babyVideo.filename" type="video/mp4" />\n                  </video>            \n          </ion-col>\n        </ion-row>\n      </ion-grid>\n    </ion-list>\n  </div>\n</ion-content>'/*ion-inline-end:"C:\Users\umashankar.maurya\Desktop\ionic\SmnApp2\src\pages\baby-detail\baby-detail.html"*/,
+        }),
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2__providers_users_users__["a" /* UsersProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__providers_users_users__["a" /* UsersProvider */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* ModalController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* ModalController */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavParams */]) === "function" && _d || Object])
+    ], BabyDetailPage);
+    return BabyDetailPage;
+    var _a, _b, _c, _d;
+}());
+
+//# sourceMappingURL=baby-detail.js.map
+
+/***/ })
+
+});
+//# sourceMappingURL=14.js.map

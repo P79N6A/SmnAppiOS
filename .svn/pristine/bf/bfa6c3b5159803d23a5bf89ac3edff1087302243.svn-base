@@ -1,0 +1,45 @@
+import { Component } from '@angular/core';
+import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { UsersProvider } from '../../providers/users/users';
+import { NativePageTransitions, NativeTransitionOptions } from '@ionic-native/native-page-transitions';
+@IonicPage()
+@Component({
+  selector: 'page-auction-room',
+  templateUrl: 'auction-room.html',
+})
+export class AuctionRoomPage {
+  public allSugarBabies=[];
+  constructor(public navCtrl: NavController,private nativePageTransitions: NativePageTransitions,
+    private usersProvider:UsersProvider,
+    public navParams: NavParams) {
+  }
+
+  ionViewDidLoad() {
+    this.usersProvider.getSugarBabies()
+		.subscribe((response)=> {this.allSugarBabies=response});
+  }
+  goToUserDetailPage(babyId){
+  	this.navCtrl.push('BabyDetailPage',{
+  		sugarBabyId:babyId
+  	});
+	}
+  enterAuctionRoom(){
+    this.navCtrl.push('AuctionRoomPage');
+  }
+  browseSb(){
+    this.navCtrl.push('SugarBabiesPage');
+  }
+  join(){
+    let options: NativeTransitionOptions = {
+      direction: 'left',
+      duration: 400,
+      slowdownfactor: -1,
+      iosdelay: 50
+     };
+    this.nativePageTransitions.slide(options);
+    this.navCtrl.push('JoinUsPage');
+  }
+  login(){
+    this.navCtrl.push('LoginPage');
+  }
+}

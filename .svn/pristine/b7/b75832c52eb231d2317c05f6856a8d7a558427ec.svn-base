@@ -1,0 +1,6 @@
+<ion-tabs [selectedIndex]="myIndex" color="darkgrey">
+  <ion-tab [root]="tab1Root" tabTitle="Auction Room" tabIcon="logo-dropbox"></ion-tab>
+  <ion-tab [root]="tab2Root" tabTitle="Join" tabIcon="md-person-add"></ion-tab>
+  <ion-tab [root]="tab3Root" tabTitle="Login" tabIcon="ios-log-in"></ion-tab>
+  <ion-tab [root]="tab4Root" tabTitle="Sugar Babies" tabIcon="ios-people"></ion-tab>
+</ion-tabs>

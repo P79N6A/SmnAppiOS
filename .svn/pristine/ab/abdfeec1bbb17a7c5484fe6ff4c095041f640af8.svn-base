@@ -1,0 +1,270 @@
+// Ionic Variables and Theming. For more info, please see:
+// http://ionicframework.com/docs/theming/
+
+// Font path is used to include ionicons,
+// roboto, and noto sans fonts
+$font-path: "../assets/fonts";
+
+
+// The app direction is used to include
+// rtl styles in your app. For more info, please see:
+// http://ionicframework.com/docs/theming/rtl-support/
+$app-direction: ltr;
+
+
+@import "ionic.globals";
+
+
+// Shared Variables
+// --------------------------------------------------
+// To customize the look and feel of this app, you can override
+// the Sass variables found in Ionic's source scss files.
+// To view all the possible Ionic variables, see:
+// http://ionicframework.com/docs/theming/overriding-ionic-variables/
+
+
+
+
+// Named Color Variables
+// --------------------------------------------------
+// Named colors makes it easy to reuse colors on various components.
+// It's highly recommended to change the default colors
+// to match your app's branding. Ionic uses a Sass map of
+// colors so you can add, rename and remove colors as needed.
+// The "primary" color is the only required color in the map.
+
+$colors: (
+  primary:    #086ceb,
+  secondary:  #32db64,
+  danger:     #f53d3d,
+  light:      #fff,
+  dark:       #000,
+  darkgrey:   #1b1b1b,
+);
+
+
+// App iOS Variables
+// --------------------------------------------------
+// iOS only Sass variables can go here
+
+
+
+
+// App Material Design Variables
+// --------------------------------------------------
+// Material Design only Sass variables can go here
+
+.content-md{
+  background: color($colors, dark, base) !important;
+}
+.menu-inner button{
+background: #212121 !important;
+color: #fff;
+border-bottom:1px solid #000;}
+.menu-inner button:last-child{border-bottom:1px solid #000 !important;}
+.list .item-block .item-inner{
+border-bottom:none !important;
+padding:0px !important;
+}
+.show-menu .list{
+   height: 100%;
+   background: #2e2e2e;
+ margin:0px;
+}
+.swiper-slide h2{
+color:#fff;
+font-size:13px;
+margin: 7px 0px 0px;
+}
+.home-btm-btn ion-grid,.home-btm-btn ion-col,ion-grid.auction-btn,ion-grid.auction-btn ion-col{padding-top:0px; padding-bottom:0px;}
+.homelogo img{
+ /*max-width:105px;*/
+ height:auto;
+}
+.homeheader .toolbar-background{
+background:none !important;
+}
+.white{
+color:#fff;
+}
+.homelogo .toolbar-title{
+padding-left:0px;
+}
+.slide-zoom{
+padding:0px 10px;
+}
+.sliderthumb{
+border: 5px solid rgba(255,255,255, 0.3);
+border-radius: 4px;	
+}
+.sliderthumb img{
+display:block;
+ 
+}
+ion-header.header{
+background:url(../assets/imgs/header-bg.jpg) no-repeat;
+background-size: cover;
+}
+.homeheader .toolbar-background,ion-header.homeheader{background:none;}
+.homeheader.header .toolbar-background{border:none;}
+.header .bar-button-default-md{color:#fff;}
+ion-header .toolbar-background{background:none;}
+.toolbar-title.toolbar-title,.header .ion-ios-menu{color:#fff;}
+ion-header .toolbar .title-ios{
+   padding: 0 68px 1px;}
+.toolbar-title{text-align:left !important;}
+#device-ios .frame-container .statusbar {
+   filter: invert(100%);
+ -webkit-filter: invert(100%);
+}
+.list-ios > .item-block:first-child {
+   border-top:1px solid #000 !important;
+}
+.show-menu .toolbar-background{
+ background:#212121;
+ border:none;
+ color:#fff;}
+.show-page .scroll-content{background:#000;}
+.tabbar.show-tabbar{border-top:1px solid #2f2f2f;}
+.tabbar .tab-button{border-right:1px solid #2f2f2f;}
+.tabbar #tab-t0-3.tab-button{border-right:none;}
+.content p{color:#fff;}
+.header .ion-icon{
+    color: #fff;}
+.header-md::after{background-image:none !important;}
+/*Login page css start*/
+.login-content.card{background:none;}
+.login-content .card-content{padding:0px;}
+.login-inputs{
+ .item-input{
+   padding:0px;
+   .item-inner{
+   padding:0px;
+   border:none !important;
+   }
+   }
+ .item{
+ background:none;
+ }
+ .label[stacked]{
+  color:#fff !important;
+  text-transform:uppercase;
+  margin:15px 0px 0px;
+  width:100%;
+  display:block;
+ }
+ input,textarea{
+ color:rgba(255,255,255,0.5);
+ border-bottom:2px solid #3f3f3f;
+ padding:5px 0px;
+ width: 100% !important;
+ margin:0px 0px 0px !important;
+ }
+ .btn-login{
+ font-weight:bold;
+ margin-top:10px;
+ text-transform:uppercase;
+ }
+ .btn-forgot{color:#fff;
+ text-decoration:underline;
+ text-transform: capitalize;}
+ .radio .radio-checked .radio-inner,.radio-md .radio-checked{border-color:#fff;}
+ .radio-md .radio-checked .radio-inner{background: #fff;}
+ .item,.item-inner{padding:0px;border:none !important}
+.item.item-radio{color:#fff;}
+.item-ios .radio-ios {
+    margin: 8px 8px 8px 8px;
+	.radio-icon{
+    border: 1px solid #787878;
+    padding: 0px 3px;
+	width: 16px;
+height: 16px;}
+	 .radio-checked{border: 1px solid #fff;}
+	 }
+.item-radio-checked.item ion-label{color:#fff;}
+}
+.main-head .toolbar-title{font-size:18px;text-transform:uppercase;margin-bottom: 10px;}
+.main-head .toolbar-title-md{padding:0px;}
+.login-inputs.list{margin-bottom:0px;}
+.login-inputs .radio-ios .radio-checked .radio-inner {
+    left: 4px;
+    top: 0px;
+	}
+.tabs .tabbar .tab-button {
+    padding: 0 2px 6px;
+
+.tab-button-text{font-size: 11px;
+transform:none !important;
+transition:none !important;
+}
+}
+.tabs .tabbar .tab-button-icon{font-size:30px;
+margin-top: 4px;
+margin-bottom: 1px;
+min-width: 35px;
+height: 30px;}
+.loginWorning .label{margin:6px 0px 6px;font-size:11px;}
+.show-menu .item-md.item-block .item-inner{background-image: url("data:image/svg+xml;charset=utf-8,<svg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2012%2020'><path%20d='M2,20l-2-2l8-8L0,2l2-2l10,10L2,20z'%20fill='%23c8c7cc'/></svg>");
+background-position: right 14px center;
+background-position: right calc(14px + constant(safe-area-inset-right)) center;
+background-position: right calc(14px + env(safe-area-inset-right)) center;
+background-repeat: no-repeat;
+background-size: 14px 14px;}
+.home-btm-btn{margin-bottom: 20px;}
+.sb-listing{margin-bottom:15px;}
+.back-button .back-button-text{display:none;}
+.back-button .icon{color:#fff;}
+button.home-browse{
+    border-radius: 4px;
+    height: 2.4em;
+    font-size: 1.4rem;}
+.tabs-md[tabsLayout="icon-top"] .has-icon .tab-button-text {
+    margin-top: 0px !important;}
+.main-head-red .toolbar-title{color:#ab1919;padding:0px;}
+$text-input-md-highlight-color-invalid: transparent;
+$text-input-md-highlight-color-valid: transparent;
+$text-input-md-show-invalid-highlight: transparent;
+$text-input-md-highlight-color: transparent;
+$text-input-md-show-valid-highlight: transparent;
+ion-header .toolbar .menu-bar.title-ios{padding: 0 16px 1px;}
+.menu-bar .toolbar-title{
+    font-size:19px;
+}
+.error {
+    font-size: 12px;
+}
+.login-inputs{
+.item.item-block{
+min-height:auto;
+}
+}
+// App Windows Variables
+// --------------------------------------------------
+// Windows only Sass variables can go here
+
+
+
+
+// App Theme
+// --------------------------------------------------
+// Ionic apps can have different themes applied, which can
+// then be future customized. This import comes last
+// so that the above variables are used and Ionic's
+// default are overridden.
+
+@import "ionic.theme.default";
+
+
+// Ionicons
+// --------------------------------------------------
+// The premium icon font for Ionic. For more info, please see:
+// http://ionicframework.com/docs/ionicons/
+
+@import "ionic.ionicons";
+
+
+// Fonts
+// --------------------------------------------------
+
+@import "roboto";
+@import "noto-sans";

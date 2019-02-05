@@ -1,0 +1,3 @@
+page-reset-password {
+    .loginWorning {color:rgb(223, 8, 8);}
+}

@@ -1,0 +1,62 @@
+<ion-header>
+
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title *ngIf="!authenticated">Login</ion-title>
+    <ion-title *ngIf="authenticated">Logout</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-title class="homelogo" text-center><img src="../assets/imgs/login-logo.png" alt=""></ion-title>
+  <ion-card class="login-content">
+    <ion-card-content>
+      <p text-center>Join SugarMeNow today and find yourself a lovely date or the perfect arrangment Be
+        prepared for access to the top.</p>
+    </ion-card-content>
+  </ion-card>
+  <ion-list no-lines class="login-inputs" *ngIf="!authenticated">
+
+
+      <form novalidate (ngSubmit)="setAuthState(true)" [formGroup]="loginform">
+    <ion-item no-lines>
+      <ion-label stacked>Email</ion-label>
+      <ion-input no-lines type="email" placeholder="Email" [(ngModel)]="userData.email" formControlName="email" [class.error1]="!loginform.controls.email.valid && loginform.controls.email.dirty"></ion-input>
+    </ion-item>
+    <ion-item no-lines *ngIf="( loginform.get('email').hasError('minlength') || loginform.get('email').hasError('pattern') ||loginform.get('email').hasError('required') ) && loginform.get('email').touched">
+        <div class="error" *ngIf="loginform.get('email').hasError('required') && loginform.get('email').touched">
+          Please input your email
+        </div>
+        <div class="error" *ngIf="loginform.get('email').hasError('pattern') && loginform.get('email').touched">
+          Email address invalid
+        </div>
+      </ion-item>
+    <ion-item no-lines>
+      <ion-label stacked>Password</ion-label>
+      <ion-input type="password" placeholder="Password" [(ngModel)]="userData.password" formControlName="password" [class.error1]="!loginform.controls.password.valid && loginform.controls.password.dirty"></ion-input>
+    </ion-item>
+    <ion-item no-lines *ngIf="( loginform.get('password').hasError('minlength') || loginform.get('password').hasError('maxlength') ||loginform.get('password').hasError('required') ) && loginform.get('password').touched">
+        <div class="error" *ngIf="loginform.get('password').hasError('required') && loginform.get('password').touched">
+          Please input your password
+        </div>
+        <div class="error" *ngIf="loginform.get('password').hasError('minlength') && loginform.get('password').touched">
+          Minimum 6 characters
+        </div>
+        <div class="error" *ngIf="loginform.get('password').hasError('maxlength') && loginform.get('password').touched">
+          Maximum 12 characters
+        </div>
+      </ion-item>
+    <ion-item class="error" *ngIf="errorMsg">{{responseFailsData}}</ion-item>
+    <button type="submit" ion-button full block color="primary" class="disable-hover button button-ios btn-login" [disabled]="loginform.invalid"
+      *ngIf="!authenticated">LOGIN</button>
+    </form>
+    <button class="btn-forgot" ion-button full clear (click)="goToResetPassPage()">Forgot Password</button>
+  </ion-list>
+  <ion-list *ngIf="authenticated">
+    <button ion-button full block color="danger" (click)="setAuthState(false)" *ngIf="authenticated">Logout</button>
+  </ion-list>
+</ion-content>

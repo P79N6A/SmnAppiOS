@@ -1,0 +1,40 @@
+import { Component,OnInit } from '@angular/core';
+import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { UsersProvider } from '../../providers/users/users';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+/**
+ * Generated class for the JoinUsPage page.
+ *
+ * See https://ionicframework.com/docs/components/#navigation for more info on
+ * Ionic pages and navigation.
+ */
+
+@IonicPage()
+@Component({
+  selector: 'page-join-us',
+  templateUrl: 'join-us.html',
+})
+export class JoinUsPage{
+  joinform: FormGroup;
+  userData={"gender":"","interestedin":"","user_type":"","nickname":"","email":"","password":"","phone_number":""};
+  checkData={"age":"","confirmPassword":""};
+  responseData:any;
+  responseMsg = false;
+  constructor(public usersProvider:UsersProvider, public navCtrl: NavController, public navParams: NavParams) {
+  }
+  ngOnInit() {
+    let EMAILPATTERN = /^[a-z0-9!#$%&'*+\/=?^_`{|}~.-]+@[a-z0-9]([a-z0-9-]*[a-z0-9])?(\.[a-z0-9]([a-z0-9-]*[a-z0-9])?)*$/i;
+    this.joinform = new FormGroup({
+      message: new FormControl('', [Validators.required]),
+      interestedin: new FormControl('', [Validators.required]),
+      name: new FormControl('', [Validators.required, Validators.pattern('[a-zA-Z ]*'), Validators.minLength(4), Validators.maxLength(30)]),
+      email: new FormControl('', [Validators.required, Validators.pattern(EMAILPATTERN)]),
+    });
+  }
+  ionViewDidLoad() {
+  } 
+      joinUs(){
+      this.usersProvider.joinUs(this.userData).subscribe((response) => {this.responseData = response,this.responseMsg = true;});
+      
+      }
+}

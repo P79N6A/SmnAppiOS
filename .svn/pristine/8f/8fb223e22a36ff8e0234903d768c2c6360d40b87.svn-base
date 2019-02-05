@@ -1,0 +1,192 @@
+<!--
+  Generated template for the JoinUsPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Join Now</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content padding>
+  <ion-list class="login-inputs">
+  <form novalidate (ngSubmit)="joinUs()" [formGroup]="joinform">
+      <ion-list radio-group formControlName="userType" [(ngModel)]="userData.user_type" class="login-inputs checkboxes-join">
+          <ion-item>
+            <ion-radio item-left value="1" checked></ion-radio>
+            <ion-label>Sugar Daddy/Sugar Mommy</ion-label>
+          </ion-item>
+          <ion-item>
+            <ion-radio item-left value="2"></ion-radio>
+            <ion-label>Sugar Baby</ion-label>
+          </ion-item>
+        </ion-list>
+        <ion-item no-lines *ngIf="( joinform.get('userType').hasError('required') ) && joinform.get('userType').touched">
+            <div class="error">
+              Please Select User Type
+            </div>
+          </ion-item>
+    <ion-item>
+      <ion-label stacked>Nick Name</ion-label>
+      <ion-input type="text" formControlName="nickname" placeholder="Enter Nick Name" [(ngModel)]="userData.nickname"></ion-input>
+    </ion-item>
+    <ion-item no-lines *ngIf="( joinform.get('nickname').hasError('minlength') || joinform.get('nickname').hasError('maxlength') ||joinform.get('nickname').hasError('pattern') ||joinform.get('nickname').hasError('required') ) && joinform.get('nickname').touched">
+				<div class="error" *ngIf="joinform.get('nickname').hasError('required') && joinform.get('nickname').touched">
+					Please enter your Nick Name
+				</div>
+				<div class="error" *ngIf="joinform.get('nickname').hasError('minlength') && joinform.get('nickname').touched">
+					Minimum 4 characters
+				</div>
+				<div class="error" *ngIf="joinform.get('nickname').hasError('maxlength') && joinform.get('nickname').touched">
+					Maximum 30 characters
+				</div>
+				<div class="error" *ngIf="joinform.get('nickname').hasError('pattern') && joinform.get('nickname').touched">
+					Just use alphabet character
+				</div>
+			</ion-item>
+    <ion-item>
+      <ion-label stacked>Email</ion-label>
+      <ion-input type="email" formControlName="email" placeholder="Plese Enter Email" [(ngModel)]="userData.email"></ion-input>
+    </ion-item>
+    <ion-item no-lines *ngIf="( joinform.get('email').hasError('minlength') || joinform.get('email').hasError('pattern') ||joinform.get('email').hasError('required') ) && joinform.get('email').touched">
+				<div class="error" *ngIf="joinform.get('email').hasError('required') && joinform.get('email').touched">
+					Please enter your email
+				</div>
+				<div class="error" *ngIf="joinform.get('email').hasError('pattern') && joinform.get('email').touched">
+					Email address invalid
+				</div>
+			</ion-item>
+    <ion-item>
+      <ion-label stacked>Password</ion-label>
+      <ion-input type="password" formControlName="password" placeholder="Plese Enter Password" [(ngModel)]="userData.password"></ion-input>
+    </ion-item>
+    <ion-item no-lines *ngIf="( joinform.get('password').hasError('minlength') ||joinform.get('password').hasError('required') ) && joinform.get('password').touched">
+				<div class="error" *ngIf="joinform.get('password').hasError('required') && joinform.get('password').touched">
+					Please enter your Password
+				</div>
+				<div class="error" *ngIf="joinform.get('password').hasError('minlength') && joinform.get('password').touched">
+					Minimum 6 characters
+				</div>
+			</ion-item>
+    <ion-item>
+      <ion-label stacked>Confirm Password</ion-label>
+      <ion-input type="password" formControlName="confirmPassword" placeholder="Enter Comfirm Password" [(ngModel)]="checkData.confirmPassword"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label stacked>Phone</ion-label>
+      <ion-input type="text" formControlName="phone_number" placeholder="Enter Phone" [(ngModel)]="userData.phone_number"></ion-input>
+    </ion-item>
+    <ion-item no-lines *ngIf="( joinform.get('phone_number').hasError('required') ) && joinform.get('phone_number').touched">
+				<div class="error" *ngIf="joinform.get('phone_number').hasError('required') && joinform.get('phone_number').touched">
+					Please enter your Phone
+				</div>
+			</ion-item>
+    <div class="join-checkboxes">
+      <ion-grid>
+        <ion-row>
+          <ion-col col-12>
+            <ion-title>I,m Over 18:</ion-title>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+      <ion-list formControlName="age" radio-group [(ngModel)]="checkData.age">
+        <ion-grid>
+          <ion-row>
+            <ion-col col-6>
+              <ion-item>
+                <ion-radio item-left value="yes" checked></ion-radio>
+                <ion-label>Yes</ion-label>
+              </ion-item>
+            </ion-col>
+            <ion-col col-6>
+              <ion-item>
+                <ion-radio item-left value="no"></ion-radio>
+                <ion-label>No</ion-label>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-list>
+      <ion-item no-lines *ngIf="( joinform.get('age').hasError('required') ) && joinform.get('age').touched">
+          <div class="error">
+            Please Select age
+          </div>
+        </ion-item>
+      <ion-grid>
+        <ion-row>
+          <ion-col col-12>
+            <ion-title>I'm a:</ion-title>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+      <ion-list formControlName="gender" radio-group [(ngModel)]="userData.gender">
+        <ion-grid>
+          <ion-row>
+            <ion-col col-6>
+              <ion-item>
+                <ion-radio item-left value="Male" checked></ion-radio>
+                <ion-label>Man</ion-label>
+              </ion-item>
+            </ion-col>
+            <ion-col col-6>
+              <ion-item>
+                <ion-radio item-left value="Female"></ion-radio>
+                <ion-label>Woman</ion-label>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-list>
+      <ion-item no-lines *ngIf="( joinform.get('gender').hasError('required') ) && joinform.get('gender').touched">
+          <div class="error">
+            Please Select gender
+          </div>
+        </ion-item>
+      <ion-grid>
+        <ion-row>
+          <ion-col col-12>
+            <ion-title>Interested In:</ion-title>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+      <ion-list radio-group formControlName="interestedin" [(ngModel)]="userData.interestedin">
+        <ion-grid>
+          <ion-row>
+            <ion-col col-6>
+              <ion-item>
+                <ion-radio item-left value="0" checked></ion-radio>
+                <ion-label>Man</ion-label>
+              </ion-item>
+            </ion-col>
+            <ion-col col-6>
+              <ion-item>
+                <ion-radio item-left value="1"></ion-radio>
+                <ion-label>Woman</ion-label>
+              </ion-item>
+            </ion-col>
+            <ion-col col-6>
+              <ion-item>
+                <ion-radio item-left value="2"></ion-radio>
+                <ion-label>Both</ion-label>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-list>
+      <ion-item no-lines *ngIf="( joinform.get('interestedin').hasError('required') ) && joinform.get('interestedin').touched">
+          <div class="error">
+            Please Select interestedin
+          </div>
+        </ion-item>
+    </div>
+    <ion-item [class]="responseclass" *ngIf="responseMsg">{{responseData.msg}}</ion-item>
+    <ion-item class="error" *ngIf="passwordNotMatch">{{passwordNotMatch}}</ion-item>
+    <button type="submit" class="disable-hover button button-ios btn-login" ion-button block color="primary" [disabled]="joinform.invalid">SUBMIT</button>
+    </form>
+  </ion-list>
+</ion-content>

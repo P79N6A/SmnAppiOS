@@ -1,0 +1,111 @@
+webpackJsonp([2],{
+
+/***/ 685:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TimerPageModule", function() { return TimerPageModule; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(84);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__timer__ = __webpack_require__(702);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+
+
+
+var TimerPageModule = /** @class */ (function () {
+    function TimerPageModule() {
+    }
+    TimerPageModule = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["I" /* NgModule */])({
+            declarations: [
+                __WEBPACK_IMPORTED_MODULE_2__timer__["a" /* TimerPage */],
+            ],
+            imports: [
+                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__timer__["a" /* TimerPage */]),
+            ],
+        })
+    ], TimerPageModule);
+    return TimerPageModule;
+}());
+
+//# sourceMappingURL=timer.module.js.map
+
+/***/ }),
+
+/***/ 702:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return TimerPage; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(84);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+/**
+ * Generated class for the TimerPage page.
+ *
+ * See https://ionicframework.com/docs/components/#navigation for more info on
+ * Ionic pages and navigation.
+ */
+var TimerPage = /** @class */ (function () {
+    function TimerPage(navCtrl, navParams) {
+        this.navCtrl = navCtrl;
+        this.navParams = navParams;
+        var countDownDate = new Date("Oct 22, 2019 14:50:25").getTime();
+        // Update the count down every 1 second
+        var x = setInterval(function () {
+            // Get todays date and time
+            var now = new Date().getTime();
+            // Find the distance between now and the count down date
+            var distance = countDownDate - now;
+            // Time calculations for days, hours, minutes and seconds
+            var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+            //console.log(now, "now", "countDownDate", countDownDate, "distance", distance, "days", days);
+            // Output the result in an element with id="auctionTimer"
+            //document.getElementById("auctionTimer").innerHTML = days + "d " + hours + "h "+ minutes + "m " + seconds + "s ";
+            document.getElementById("hours").innerHTML = hours + "";
+            document.getElementById("minuts").innerHTML = minutes + "";
+            document.getElementById("seconds").innerHTML = seconds + "";
+            // If the count down is over, write some text 
+            if (distance < 0) {
+                clearInterval(x);
+                document.getElementById("auctionTimer").innerHTML = "AUCTION CLOSED";
+            }
+        }, 1000);
+    }
+    TimerPage.prototype.ionViewDidLoad = function () {
+        console.log('ionViewDidLoad TimerPage');
+    };
+    TimerPage = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
+            selector: 'page-timer',template:/*ion-inline-start:"C:\Users\umashankar.maurya\Desktop\ionic\SmnApp2\src\pages\timer\timer.html"*/'<!--\n  Generated template for the TimerPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-title>timer</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding >\n  <ion-item id="auctionTimer">\n    <ion-grid>\n      <ion-row>\n        <ion-col id="hours"></ion-col><ion-col id="minuts"></ion-col><ion-col id="seconds"></ion-col>\n      </ion-row>\n      <ion-row>\n        <ion-col>HOURS</ion-col><ion-col>MINUTS</ion-col><ion-col>SECONDS</ion-col>\n      </ion-row>\n    </ion-grid>\n  </ion-item>\n</ion-content>\n'/*ion-inline-end:"C:\Users\umashankar.maurya\Desktop\ionic\SmnApp2\src\pages\timer\timer.html"*/,
+        }),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavParams */]])
+    ], TimerPage);
+    return TimerPage;
+}());
+
+//# sourceMappingURL=timer.js.map
+
+/***/ })
+
+});
+//# sourceMappingURL=2.js.map

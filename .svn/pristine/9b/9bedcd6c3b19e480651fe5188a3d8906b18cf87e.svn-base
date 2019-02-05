@@ -1,0 +1,40 @@
+<!--
+  Generated template for the ContactPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+      <button ion-button menuToggle>
+          <ion-icon name="menu"></ion-icon>
+        </button>
+    <ion-title>Contact</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+	<!--<ion-title class="main-head">Contact Us</ion-title>-->
+	<ion-title class="homelogo contact-logo" text-center><img src="../assets/imgs/login-logo.png" alt=""></ion-title>
+	<ion-list class="login-inputs">
+	
+		<ion-item>
+				<ion-label stacked>Enter Name</ion-label>
+			<ion-input type="text" placeholder="Name" [(ngModel)]="userData.name"></ion-input>
+		</ion-item>
+	
+		<ion-item>
+				<ion-label stacked>Enter Email Id</ion-label>
+			<ion-input type="email" placeholder="Email" [(ngModel)]="userData.email"></ion-input>
+		</ion-item>
+		<ion-item>
+				<ion-label stacked>Enter Your Message</ion-label>
+			<ion-textarea placeholder="Message" [(ngModel)]="userData.message"></ion-textarea>
+		</ion-item>
+		<ion-item class="loginWorning" *ngIf="responseMsg">{{responseData.msg}}</ion-item>
+		<button block color="primary" ion-button="" class="disable-hover button button-ios btn-login" (click)="contactUs()">SUBMIT</button>
+	</ion-list>
+</ion-content>

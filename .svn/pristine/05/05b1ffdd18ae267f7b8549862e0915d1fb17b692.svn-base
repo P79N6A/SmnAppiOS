@@ -1,0 +1,125 @@
+webpackJsonp([11],{
+
+/***/ 684:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "JoinUsPageModule", function() { return JoinUsPageModule; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(84);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__join_us__ = __webpack_require__(703);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+
+
+
+var JoinUsPageModule = /** @class */ (function () {
+    function JoinUsPageModule() {
+    }
+    JoinUsPageModule = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["I" /* NgModule */])({
+            declarations: [
+                __WEBPACK_IMPORTED_MODULE_2__join_us__["a" /* JoinUsPage */],
+            ],
+            imports: [
+                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__join_us__["a" /* JoinUsPage */]),
+            ],
+        })
+    ], JoinUsPageModule);
+    return JoinUsPageModule;
+}());
+
+//# sourceMappingURL=join-us.module.js.map
+
+/***/ }),
+
+/***/ 703:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return JoinUsPage; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(84);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_users_users__ = __webpack_require__(347);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_forms__ = __webpack_require__(25);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+/**
+ * Generated class for the JoinUsPage page.
+ *
+ * See https://ionicframework.com/docs/components/#navigation for more info on
+ * Ionic pages and navigation.
+ */
+var JoinUsPage = /** @class */ (function () {
+    function JoinUsPage(usersProvider, navCtrl, navParams) {
+        this.usersProvider = usersProvider;
+        this.navCtrl = navCtrl;
+        this.navParams = navParams;
+        this.responseclass = "error";
+        this.userData = { "gender": "", "interestedin": "", "user_type": "", "nickname": "", "email": "", "password": "", "phone_number": "" };
+        this.checkData = { "age": "", "confirmPassword": "" };
+        this.responseMsg = false;
+    }
+    JoinUsPage.prototype.ngOnInit = function () {
+        var EMAILPATTERN = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-z\-0-9]+\.)+[a-z]{2,}))$/;
+        this.joinform = new __WEBPACK_IMPORTED_MODULE_3__angular_forms__["b" /* FormGroup */]({
+            userType: new __WEBPACK_IMPORTED_MODULE_3__angular_forms__["a" /* FormControl */]('', [__WEBPACK_IMPORTED_MODULE_3__angular_forms__["g" /* Validators */].required]),
+            nickname: new __WEBPACK_IMPORTED_MODULE_3__angular_forms__["a" /* FormControl */]('', [__WEBPACK_IMPORTED_MODULE_3__angular_forms__["g" /* Validators */].required, __WEBPACK_IMPORTED_MODULE_3__angular_forms__["g" /* Validators */].pattern('[a-zA-Z ]*'), __WEBPACK_IMPORTED_MODULE_3__angular_forms__["g" /* Validators */].minLength(4), __WEBPACK_IMPORTED_MODULE_3__angular_forms__["g" /* Validators */].maxLength(30)]),
+            email: new __WEBPACK_IMPORTED_MODULE_3__angular_forms__["a" /* FormControl */]('', [__WEBPACK_IMPORTED_MODULE_3__angular_forms__["g" /* Validators */].required, __WEBPACK_IMPORTED_MODULE_3__angular_forms__["g" /* Validators */].pattern(EMAILPATTERN)]),
+            password: new __WEBPACK_IMPORTED_MODULE_3__angular_forms__["a" /* FormControl */]('', [__WEBPACK_IMPORTED_MODULE_3__angular_forms__["g" /* Validators */].required, __WEBPACK_IMPORTED_MODULE_3__angular_forms__["g" /* Validators */].minLength(6)]),
+            confirmPassword: new __WEBPACK_IMPORTED_MODULE_3__angular_forms__["a" /* FormControl */]('', [__WEBPACK_IMPORTED_MODULE_3__angular_forms__["g" /* Validators */].required]),
+            phone_number: new __WEBPACK_IMPORTED_MODULE_3__angular_forms__["a" /* FormControl */]('', [__WEBPACK_IMPORTED_MODULE_3__angular_forms__["g" /* Validators */].required]),
+            age: new __WEBPACK_IMPORTED_MODULE_3__angular_forms__["a" /* FormControl */]('', [__WEBPACK_IMPORTED_MODULE_3__angular_forms__["g" /* Validators */].required]),
+            gender: new __WEBPACK_IMPORTED_MODULE_3__angular_forms__["a" /* FormControl */]('', [__WEBPACK_IMPORTED_MODULE_3__angular_forms__["g" /* Validators */].required]),
+            interestedin: new __WEBPACK_IMPORTED_MODULE_3__angular_forms__["a" /* FormControl */]('', [__WEBPACK_IMPORTED_MODULE_3__angular_forms__["g" /* Validators */].required]),
+        });
+    };
+    JoinUsPage.prototype.ionViewDidLoad = function () {
+    };
+    JoinUsPage.prototype.joinUs = function () {
+        var _this = this;
+        if (this.userData.password == this.checkData.confirmPassword) {
+            this.passwordNotMatch = null;
+            this.usersProvider.joinUs(this.userData).subscribe(function (response) {
+                _this.responseData = response, _this.responseMsg = true;
+                if (response['status'] == 1) {
+                    _this.responseclass = "sucess-msg";
+                    _this.joinform.reset();
+                }
+            });
+        }
+        else {
+            this.passwordNotMatch = "Password And ConfirmPassword is Not Same";
+        }
+    };
+    JoinUsPage = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
+            selector: 'page-join-us',template:/*ion-inline-start:"C:\Users\umashankar.maurya\Desktop\ionic\SmnApp2\src\pages\join-us\join-us.html"*/'<!--\n  Generated template for the JoinUsPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <button ion-button menuToggle>\n      <ion-icon name="menu"></ion-icon>\n    </button>\n    <ion-title>Join Now</ion-title>\n  </ion-navbar>\n</ion-header>\n<ion-content padding>\n  <ion-list class="login-inputs">\n  <form novalidate (ngSubmit)="joinUs()" [formGroup]="joinform">\n      <ion-list radio-group formControlName="userType" [(ngModel)]="userData.user_type" class="login-inputs checkboxes-join">\n          <ion-item>\n            <ion-radio item-left value="1" checked></ion-radio>\n            <ion-label>Sugar Daddy/Sugar Mommy</ion-label>\n          </ion-item>\n          <ion-item>\n            <ion-radio item-left value="2"></ion-radio>\n            <ion-label>Sugar Baby</ion-label>\n          </ion-item>\n        </ion-list>\n        <ion-item no-lines *ngIf="( joinform.get(\'userType\').hasError(\'required\') ) && joinform.get(\'userType\').touched">\n            <div class="error">\n              Please Select User Type\n            </div>\n          </ion-item>\n    <ion-item>\n      <ion-label stacked>Nick Name</ion-label>\n      <ion-input type="text" formControlName="nickname" placeholder="Enter Nick Name" [(ngModel)]="userData.nickname"></ion-input>\n    </ion-item>\n    <ion-item no-lines *ngIf="( joinform.get(\'nickname\').hasError(\'minlength\') || joinform.get(\'nickname\').hasError(\'maxlength\') ||joinform.get(\'nickname\').hasError(\'pattern\') ||joinform.get(\'nickname\').hasError(\'required\') ) && joinform.get(\'nickname\').touched">\n				<div class="error" *ngIf="joinform.get(\'nickname\').hasError(\'required\') && joinform.get(\'nickname\').touched">\n					Please enter your Nick Name\n				</div>\n				<div class="error" *ngIf="joinform.get(\'nickname\').hasError(\'minlength\') && joinform.get(\'nickname\').touched">\n					Minimum 4 characters\n				</div>\n				<div class="error" *ngIf="joinform.get(\'nickname\').hasError(\'maxlength\') && joinform.get(\'nickname\').touched">\n					Maximum 30 characters\n				</div>\n				<div class="error" *ngIf="joinform.get(\'nickname\').hasError(\'pattern\') && joinform.get(\'nickname\').touched">\n					Just use alphabet character\n				</div>\n			</ion-item>\n    <ion-item>\n      <ion-label stacked>Email</ion-label>\n      <ion-input type="email" formControlName="email" placeholder="Plese Enter Email" [(ngModel)]="userData.email"></ion-input>\n    </ion-item>\n    <ion-item no-lines *ngIf="( joinform.get(\'email\').hasError(\'minlength\') || joinform.get(\'email\').hasError(\'pattern\') ||joinform.get(\'email\').hasError(\'required\') ) && joinform.get(\'email\').touched">\n				<div class="error" *ngIf="joinform.get(\'email\').hasError(\'required\') && joinform.get(\'email\').touched">\n					Please enter your email\n				</div>\n				<div class="error" *ngIf="joinform.get(\'email\').hasError(\'pattern\') && joinform.get(\'email\').touched">\n					Email address invalid\n				</div>\n			</ion-item>\n    <ion-item>\n      <ion-label stacked>Password</ion-label>\n      <ion-input type="password" formControlName="password" placeholder="Plese Enter Password" [(ngModel)]="userData.password"></ion-input>\n    </ion-item>\n    <ion-item no-lines *ngIf="( joinform.get(\'password\').hasError(\'minlength\') ||joinform.get(\'password\').hasError(\'required\') ) && joinform.get(\'password\').touched">\n				<div class="error" *ngIf="joinform.get(\'password\').hasError(\'required\') && joinform.get(\'password\').touched">\n					Please enter your Password\n				</div>\n				<div class="error" *ngIf="joinform.get(\'password\').hasError(\'minlength\') && joinform.get(\'password\').touched">\n					Minimum 6 characters\n				</div>\n			</ion-item>\n    <ion-item>\n      <ion-label stacked>Confirm Password</ion-label>\n      <ion-input type="password" formControlName="confirmPassword" placeholder="Enter Comfirm Password" [(ngModel)]="checkData.confirmPassword"></ion-input>\n    </ion-item>\n    <ion-item>\n      <ion-label stacked>Phone</ion-label>\n      <ion-input type="text" formControlName="phone_number" placeholder="Enter Phone" [(ngModel)]="userData.phone_number"></ion-input>\n    </ion-item>\n    <ion-item no-lines *ngIf="( joinform.get(\'phone_number\').hasError(\'required\') ) && joinform.get(\'phone_number\').touched">\n				<div class="error" *ngIf="joinform.get(\'phone_number\').hasError(\'required\') && joinform.get(\'phone_number\').touched">\n					Please enter your Phone\n				</div>\n			</ion-item>\n    <div class="join-checkboxes">\n      <ion-grid>\n        <ion-row>\n          <ion-col col-12>\n            <ion-title>I,m Over 18:</ion-title>\n          </ion-col>\n        </ion-row>\n      </ion-grid>\n      <ion-list formControlName="age" radio-group [(ngModel)]="checkData.age">\n        <ion-grid>\n          <ion-row>\n            <ion-col col-6>\n              <ion-item>\n                <ion-radio item-left value="yes" checked></ion-radio>\n                <ion-label>Yes</ion-label>\n              </ion-item>\n            </ion-col>\n            <ion-col col-6>\n              <ion-item>\n                <ion-radio item-left value="no"></ion-radio>\n                <ion-label>No</ion-label>\n              </ion-item>\n            </ion-col>\n          </ion-row>\n        </ion-grid>\n      </ion-list>\n      <ion-item no-lines *ngIf="( joinform.get(\'age\').hasError(\'required\') ) && joinform.get(\'age\').touched">\n          <div class="error">\n            Please Select age\n          </div>\n        </ion-item>\n      <ion-grid>\n        <ion-row>\n          <ion-col col-12>\n            <ion-title>I\'m a:</ion-title>\n          </ion-col>\n        </ion-row>\n      </ion-grid>\n      <ion-list formControlName="gender" radio-group [(ngModel)]="userData.gender">\n        <ion-grid>\n          <ion-row>\n            <ion-col col-6>\n              <ion-item>\n                <ion-radio item-left value="Male" checked></ion-radio>\n                <ion-label>Man</ion-label>\n              </ion-item>\n            </ion-col>\n            <ion-col col-6>\n              <ion-item>\n                <ion-radio item-left value="Female"></ion-radio>\n                <ion-label>Woman</ion-label>\n              </ion-item>\n            </ion-col>\n          </ion-row>\n        </ion-grid>\n      </ion-list>\n      <ion-item no-lines *ngIf="( joinform.get(\'gender\').hasError(\'required\') ) && joinform.get(\'gender\').touched">\n          <div class="error">\n            Please Select gender\n          </div>\n        </ion-item>\n      <ion-grid>\n        <ion-row>\n          <ion-col col-12>\n            <ion-title>Interested In:</ion-title>\n          </ion-col>\n        </ion-row>\n      </ion-grid>\n      <ion-list radio-group formControlName="interestedin" [(ngModel)]="userData.interestedin">\n        <ion-grid>\n          <ion-row>\n            <ion-col col-6>\n              <ion-item>\n                <ion-radio item-left value="0" checked></ion-radio>\n                <ion-label>Man</ion-label>\n              </ion-item>\n            </ion-col>\n            <ion-col col-6>\n              <ion-item>\n                <ion-radio item-left value="1"></ion-radio>\n                <ion-label>Woman</ion-label>\n              </ion-item>\n            </ion-col>\n            <ion-col col-6>\n              <ion-item>\n                <ion-radio item-left value="2"></ion-radio>\n                <ion-label>Both</ion-label>\n              </ion-item>\n            </ion-col>\n          </ion-row>\n        </ion-grid>\n      </ion-list>\n      <ion-item no-lines *ngIf="( joinform.get(\'interestedin\').hasError(\'required\') ) && joinform.get(\'interestedin\').touched">\n          <div class="error">\n            Please Select interestedin\n          </div>\n        </ion-item>\n    </div>\n    <ion-item [class]="responseclass" *ngIf="responseMsg">{{responseData.msg}}</ion-item>\n    <ion-item class="error" *ngIf="passwordNotMatch">{{passwordNotMatch}}</ion-item>\n    <button type="submit" class="disable-hover button button-ios btn-login" ion-button block color="primary" [disabled]="joinform.invalid">SUBMIT</button>\n    </form>\n  </ion-list>\n</ion-content>'/*ion-inline-end:"C:\Users\umashankar.maurya\Desktop\ionic\SmnApp2\src\pages\join-us\join-us.html"*/,
+        }),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__providers_users_users__["a" /* UsersProvider */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavParams */]])
+    ], JoinUsPage);
+    return JoinUsPage;
+}());
+
+//# sourceMappingURL=join-us.js.map
+
+/***/ })
+
+});
+//# sourceMappingURL=11.js.map

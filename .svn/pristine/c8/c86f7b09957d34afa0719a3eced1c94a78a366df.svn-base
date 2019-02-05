@@ -1,0 +1,108 @@
+webpackJsonp([12],{
+
+/***/ 678:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "BabyDetailPageModule", function() { return BabyDetailPageModule; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(84);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__baby_detail__ = __webpack_require__(693);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+
+
+
+var BabyDetailPageModule = /** @class */ (function () {
+    function BabyDetailPageModule() {
+    }
+    BabyDetailPageModule = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["I" /* NgModule */])({
+            declarations: [
+                __WEBPACK_IMPORTED_MODULE_2__baby_detail__["a" /* BabyDetailPage */],
+            ],
+            imports: [
+                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__baby_detail__["a" /* BabyDetailPage */]),
+            ],
+        })
+    ], BabyDetailPageModule);
+    return BabyDetailPageModule;
+}());
+
+//# sourceMappingURL=baby-detail.module.js.map
+
+/***/ }),
+
+/***/ 693:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return BabyDetailPage; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(84);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_users_users__ = __webpack_require__(347);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+/**
+ * Generated class for the BabyDetailPage page.
+ *
+ * See https://ionicframework.com/docs/components/#navigation for more info on
+ * Ionic pages and navigation.
+ */
+var BabyDetailPage = /** @class */ (function () {
+    function BabyDetailPage(usersProvider, modalController, navCtrl, navParams) {
+        this.usersProvider = usersProvider;
+        this.modalController = modalController;
+        this.navCtrl = navCtrl;
+        this.navParams = navParams;
+        this.proInfo = [];
+        this.publicImage = [];
+        this.publicVideo = [];
+        this.babyId = this.navParams.get("sugarBabyId");
+    }
+    BabyDetailPage.prototype.ionViewDidLoad = function () {
+        var _this = this;
+        var postData = { "babyId": this.babyId };
+        //console.log(postData);
+        this.usersProvider.getSugarBabiesDetails(postData)
+            .subscribe(function (response) {
+            _this.proInfo = response['data'],
+                _this.publicImage = response['data']['user_public_image'],
+                _this.publicVideo = response['data']['public_videos'];
+        });
+    };
+    BabyDetailPage.prototype.openImageModel = function (profile_pic) {
+        var openFilterModal = this.modalController.create('ImagePopupPage', { imgUrl: profile_pic });
+        openFilterModal.present();
+    };
+    BabyDetailPage = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
+            selector: 'page-baby-detail',template:/*ion-inline-start:"C:\Users\umashankar.maurya\Desktop\ionic\SmnApp2\src\pages\baby-detail\baby-detail.html"*/'<!--\n  Generated template for the BabyDetailPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-title text-capitalize>{{proInfo.nickname}}</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n<ion-content padding>\n\n   <!-- <ion-list>\n        <ion-item>\n          <ion-thumbnail item-start>\n              <img [src]="proInfo.pro_pic"/>\n          </ion-thumbnail>\n          <p>Name: {{proInfo.nickname}}</p>\n          <p>Age: {{proInfo.age}}</p>\n          <p>Address: {{proInfo.address}}</p>\n          <p>Member Since: {{proInfo.memberSince}}</p>\n          <p>Last Active: {{proInfo.last_login}}</p>\n        </ion-item>\n      </ion-list> -->\n\n\n  <ion-card>\n      <img [src]="proInfo.pro_pic"/>\n  </ion-card>\n  <ion-card>\n      <ion-card-content text-capitalize>\n        Name: {{proInfo.nickname}}\n      </ion-card-content>\n      <ion-card-content>\n        Age: {{proInfo.age}}\n      </ion-card-content>\n      <ion-card-content text-capitalize>\n        Address: {{proInfo.address}}\n      </ion-card-content>\n      <ion-card-content>\n        Member Since: {{proInfo.memberSince}}\n      </ion-card-content>\n      <ion-card-content>\n        Last Active: {{proInfo.last_login}}\n      </ion-card-content>\n  </ion-card>\n\n  <ion-toolbar no-border-top>\n      <ion-segment [(ngModel)]="babyDetails">\n        <ion-segment-button value="about">\n          ABOUT\n        </ion-segment-button>\n        <ion-segment-button value="photos">\n          PHOTOS\n        </ion-segment-button>\n        <ion-segment-button value="videos">\n          VIDEOS\n        </ion-segment-button>\n      </ion-segment>\n  </ion-toolbar>\n    <div [ngSwitch]="babyDetails">\n        <ion-list *ngSwitchCase="\'about\'">\n            <ion-card>\n                <ion-card-content text-capitalize>\n                  Name: {{proInfo.nickname}}\n                </ion-card-content>\n                <ion-card-content>\n                  Age: {{proInfo.age}}\n                </ion-card-content>\n                <ion-card-content text-capitalize>\n                    Body Type: {{proInfo.bodyType}}\n                </ion-card-content>\n                <ion-card-content text-capitalize>\n                    Drinking: {{proInfo.drinking}}\n                </ion-card-content>\n                <ion-card-content text-capitalize> \n                    Smoking: {{proInfo.smoking}}\n                </ion-card-content>\n                <ion-card-content text-capitalize>\n                  Eyes: {{proInfo.eyesColor}}\n                </ion-card-content>\n                <ion-card-content text-capitalize>\n                    Hair Length: {{proInfo.hairLength}}\n                </ion-card-content>\n                <ion-card-content text-capitalize>\n                    Height: {{proInfo.height}}\n                </ion-card-content>\n                <ion-card-content text-capitalize>\n                    Shoe Size: {{proInfo.shoe_size}}\n                </ion-card-content>\n                <ion-card-content text-capitalize>\n                    Bra Size: {{proInfo.suit_size}}\n                </ion-card-content>\n            </ion-card>\n        </ion-list>\n        <ion-list *ngSwitchCase="\'photos\'">\n            <ion-card *ngFor="let babyImg of publicImage">\n                <ion-card  (click)="openImageModel(babyImg.filename)">\n                    <img [src]="babyImg.filename"/>\n                </ion-card>\n                <ion-card-header>{{babyImg.id}}</ion-card-header>\n            </ion-card>\n        </ion-list>\n        <ion-list *ngSwitchCase="\'videos\'">\n            <ion-card *ngFor="let babyVideo of publicVideo">\n                <ion-card>\n                    <img [src]="babyVideo.filename"/>\n                </ion-card>\n                <ion-card-header>{{babyVideo.id}}</ion-card-header>\n            </ion-card>\n        </ion-list>\n    </div>\n</ion-content>'/*ion-inline-end:"C:\Users\umashankar.maurya\Desktop\ionic\SmnApp2\src\pages\baby-detail\baby-detail.html"*/,
+        }),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__providers_users_users__["a" /* UsersProvider */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* ModalController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavParams */]])
+    ], BabyDetailPage);
+    return BabyDetailPage;
+}());
+
+//# sourceMappingURL=baby-detail.js.map
+
+/***/ })
+
+});
+//# sourceMappingURL=12.js.map

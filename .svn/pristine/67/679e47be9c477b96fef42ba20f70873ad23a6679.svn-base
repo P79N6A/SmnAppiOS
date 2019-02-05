@@ -1,0 +1,13 @@
+<!-- Generated template for the PageFooterComponent component -->
+<div>
+      <ion-grid color="darkgrey" height="100px">
+          <ion-row>
+            <!-- <ion-col (click)="goAuctions()">Auctions</ion-col>
+            <ion-col (click)="goJoin()">Join</ion-col>
+            <ion-col (click)="goLogin()">Login</ion-col>
+            <ion-col (click)="goSb()">SB</ion-col> -->
+            <ion-col (click)="contact()">Contact</ion-col>
+            <ion-col (click)="about()">About</ion-col>
+          </ion-row>  
+      </ion-grid>
+</div>
